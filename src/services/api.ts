@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api',
+  baseURL: 'https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api',
 });
 
 // Add token to requests if available
