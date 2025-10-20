@@ -15,7 +15,11 @@ const AgentWiseReport: React.FC = () => {
       const rows = res.data.agentWiseTrans || res.data;
       setData(Array.isArray(rows) ? rows : []);
     } catch (e: any) {
-      setError(e.response?.data?.message || e.message || 'Failed to fetch');
+      if (e.response?.status === 500) {
+        setError('No agent data found. There are no accounts or transactions for agents.');
+      } else {
+        setError(e.response?.data?.message || e.message || 'Failed to fetch');
+      }
     } finally { setLoading(false); }
   };
 

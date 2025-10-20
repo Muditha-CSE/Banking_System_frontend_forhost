@@ -57,7 +57,11 @@ const AccountWiseReport: React.FC = () => {
       const rows = res.data.accountWiseTrans || res.data;
       setData(Array.isArray(rows) ? rows : []);
     } catch (e: any) {
-      setError(e.response?.data?.message || e.message || 'Failed to fetch');
+      if (e.response?.status === 500) {
+        setError('No account data found. There are no accounts or transactions available.');
+      } else {
+        setError(e.response?.data?.message || e.message || 'Failed to fetch');
+      }
     } finally { setLoading(false); }
   };
 
