@@ -289,7 +289,7 @@ const ViewFixedDeposits: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/api/agent/fixeddeposits', {
+  const response = await fetch('https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/fixeddeposits', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -329,7 +329,7 @@ const ViewFixedDeposits: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/agent/customers/${searchNic}/accounts`, {
+  const response = await fetch(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/customers/${searchNic}/accounts`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -542,7 +542,7 @@ const ManageFDStatusForm: React.FC = () => {
       console.log('[FD SEARCH] Searching for FD:', fdAccountNo, 'with NIC:', customerNic);
       console.log('[FD SEARCH] Token exists:', !!token);
       
-      const response = await fetch('http://localhost:3000/api/agent/fixeddeposits', {
+  const response = await fetch('https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/fixeddeposits', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -591,13 +591,13 @@ const ManageFDStatusForm: React.FC = () => {
               setAlert({ type: 'error', message: 'Unable to verify account holders.' });
               return;
             }
-            const holdersUrl = `http://localhost:3000/api/agent/jointaccount/${encodeURIComponent(linkedAcc)}/holders`;
+            const holdersUrl = `https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/jointaccount/${encodeURIComponent(linkedAcc)}/holders`;
             const holdersResp = await fetch(holdersUrl, { headers: { 'Authorization': `Bearer ${token2}` } });
             console.log('[FD SEARCH] Holders check status:', holdersResp.status);
             if (!holdersResp.ok) {
               // Fallback: try single-holder by checking savings account creator NIC
               try {
-                const accResp = await fetch(`http://localhost:3000/api/agent/savingsaccounts/${encodeURIComponent(linkedAcc)}`, {
+                const accResp = await fetch(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/savingsaccounts/${encodeURIComponent(linkedAcc)}`, {
                   headers: { 'Authorization': `Bearer ${token2}` }
                 });
                 if (accResp.ok) {
@@ -686,8 +686,8 @@ const ManageFDStatusForm: React.FC = () => {
     try {
       const token = localStorage.getItem('token');
       const url = action === 'mature'
-        ? `http://localhost:3000/api/agent/fixeddeposits/${fdAccountNo}`
-        : `http://localhost:3000/api/agent/fixeddeposits/${fdAccountNo}/reactivate`;
+  ? `https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/fixeddeposits/${fdAccountNo}`
+  : `https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/fixeddeposits/${fdAccountNo}/reactivate`;
 
       const response = await fetch(url, {
         method: action === 'mature' ? 'DELETE' : 'PATCH',

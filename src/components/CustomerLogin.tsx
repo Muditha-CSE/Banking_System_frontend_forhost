@@ -16,7 +16,7 @@ const CustomerLogin: React.FC<CustomerLoginProps> = ({ onLogin }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('http://localhost:3000/api/public/logincustomer', {
+  const res = await axios.post('https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/public/logincustomer', {
         nic,
         password,
       });

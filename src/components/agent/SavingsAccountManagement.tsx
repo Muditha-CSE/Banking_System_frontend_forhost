@@ -198,7 +198,7 @@ const ViewSavingsAccounts: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/api/agent/savingsaccounts', {
+  const response = await fetch('https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/savingsaccounts', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -236,7 +236,7 @@ const ViewSavingsAccounts: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/agent/customers/${searchNic}/accounts`, {
+  const response = await fetch(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/customers/${searchNic}/accounts`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -429,7 +429,7 @@ const ManageAccountStatusForm: React.FC = () => {
       console.log('[SEARCH] Searching for account:', accountNo, 'with NIC:', customerNic);
       console.log('[SEARCH] Token exists:', !!token);
       
-      const response = await fetch('http://localhost:3000/api/agent/savingsaccounts', {
+  const response = await fetch('https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/savingsaccounts', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -495,8 +495,8 @@ const ManageAccountStatusForm: React.FC = () => {
     try {
       const token = localStorage.getItem('token');
       const url = action === 'deactivate'
-        ? `http://localhost:3000/api/agent/savingsaccounts/${accountNo}`
-        : `http://localhost:3000/api/agent/savingsaccounts/${accountNo}/reactivate`;
+  ? `https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/savingsaccounts/${accountNo}`
+  : `https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/savingsaccounts/${accountNo}/reactivate`;
 
       const response = await fetch(url, {
         method: action === 'deactivate' ? 'DELETE' : 'PATCH',

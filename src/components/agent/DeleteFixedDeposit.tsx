@@ -26,7 +26,7 @@ const DeleteFixedDeposit: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/agent/fixeddeposits/${fdAccountNo}`, {
+  const response = await fetch(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/fixeddeposits/${fdAccountNo}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

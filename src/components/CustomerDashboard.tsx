@@ -21,7 +21,7 @@ const CustomerDashboard: React.FC<CustomerDashboardProps> = ({ token, user }) =>
   useEffect(() => {
     const fetchCustomerData = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/customer/getCustomerDetails/${user.nic}`, {
+  const res = await axios.get(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/customer/getCustomerDetails/${user.nic}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCustomerData(res.data);

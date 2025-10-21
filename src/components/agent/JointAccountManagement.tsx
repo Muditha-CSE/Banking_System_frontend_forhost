@@ -48,7 +48,7 @@ const JointAccountManagement: React.FC = () => {
     setMessage('');
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:3000/api/agent/addsavingsaccount', {
+  const res = await fetch('https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/addsavingsaccount', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const JointAccountManagement: React.FC = () => {
     try {
       const token = localStorage.getItem('token');
       // Use new endpoint to fetch joint account by account_no and NIC
-      const res = await fetch(`http://localhost:3000/api/agent/jointaccount?account_no=${searchAccountNo}&nic=${searchNic}`, {
+  const res = await fetch(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/jointaccount?account_no=${searchAccountNo}&nic=${searchNic}`, {
         headers: { 'Authorization': token ? `Bearer ${token}` : '' },
       });
       const data = await res.json();
@@ -101,7 +101,7 @@ const JointAccountManagement: React.FC = () => {
         // Fetch holders from the dedicated endpoint
         let holders: AccountHolder[] = [];
         try {
-          const holdersRes = await fetch(`http://localhost:3000/api/agent/jointaccount/${data.account.account_no}/holders`, {
+          const holdersRes = await fetch(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/jointaccount/${data.account.account_no}/holders`, {
             headers: { 'Authorization': token ? `Bearer ${token}` : '' },
           });
           const holdersData = await holdersRes.json();
@@ -143,8 +143,8 @@ const JointAccountManagement: React.FC = () => {
       // Align with backend routes
       const isActivate = action === 'activate';
       const url = isActivate
-        ? `http://localhost:3000/api/agent/savingsaccount/${encodeURIComponent(searchNic)}/${encodeURIComponent(searchedAccount.account_no)}/reactivate`
-        : `http://localhost:3000/api/agent/jointaccount/${encodeURIComponent(searchedAccount.account_no)}`;
+  ? `https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/savingsaccount/${encodeURIComponent(searchNic)}/${encodeURIComponent(searchedAccount.account_no)}/reactivate`
+  : `https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/jointaccount/${encodeURIComponent(searchedAccount.account_no)}`;
       const res = await fetch(url, {
         method: isActivate ? 'PATCH' : 'DELETE',
         headers: {

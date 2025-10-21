@@ -26,7 +26,7 @@ const DeleteSavingsAccount: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/agent/savingsaccounts/${accountNo}`, {
+  const response = await fetch(`https://btrust-dxase2esfxeghcb8.southeastasia-01.azurewebsites.net/api/agent/savingsaccounts/${accountNo}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
