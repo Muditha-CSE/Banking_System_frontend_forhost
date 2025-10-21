@@ -63,7 +63,12 @@ const JointAccountManagement: React.FC = () => {
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage('Joint account created successfully!');
+        const accountNo = data?.account_no || data?.account?.account_no;
+        setMessage(
+          accountNo
+            ? `Joint account created successfully! Account No: ${accountNo}`
+            : 'Joint account created successfully! (Account number unavailable)'
+        );
         setHolders([{ nic: '', role: 'primary' }]);
         setInitialDeposit('');
         setCreatingCustomerNic('');
